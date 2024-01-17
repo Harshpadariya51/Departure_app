@@ -1,6 +1,12 @@
 # departure_gita
 
-A new Flutter project.
+A new Flutter project. Bhagavad Gita 18 Ch.... [hindi & english].
+
+
+
+https://github.com/MrManavRamani-Flutter/Departure-Gita/assets/148671843/602ae030-c951-4537-9f5b-f0909d39d67e
+
+
 
 ## Getting Started
 
