@@ -22,27 +22,24 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: Stack(
+          alignment: const Alignment(0, 0.8),
           children: [
-            const Spacer(),
+            Expanded(
+              child: Image.asset(
+                'assets/img/bg_img.jpg',
+                height: double.infinity,
+                fit: BoxFit.fitHeight,
+              ),
+            ),
             const Text(
               'जीवन न बीते कल में है\nऔर न ही आने वाले कल में है\nजीवन जो भी है वो इसी पल में है',
               style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white),
               textAlign: TextAlign.center,
             ),
-            const SizedBox(
-              height: 30,
-            ),
-            Expanded(
-              child: Image.asset(
-                'assets/img/lord_krishna.jpg',
-              ),
-            ),
-            const Spacer(),
           ],
         ),
       ),

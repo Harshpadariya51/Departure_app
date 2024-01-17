@@ -20,55 +20,88 @@ class DetailScreen extends StatelessWidget {
             : Text(geeta.name),
       ),
       endDrawer: const Navbar(),
-      body: Column(
-        children: [
-          Card(
-            shadowColor: Colors.greenAccent,
-            surfaceTintColor: Colors.blueAccent,
-            elevation: 15,
-            margin: const EdgeInsets.all(10),
-            child: Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
+      body: SingleChildScrollView(
+        child: SizedBox(
+          height: double.minPositive,
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(15.0),
                 child: Image.asset(
                   'assets/img/lord_krishna.jpg',
                   fit: BoxFit.fill,
                 ),
               ),
-            ),
-          ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                alignment: Alignment.topLeft,
-                child: (langProvider.isLangModel.isLang == false)
-                    ? Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          geeta.chapterSummary,
-                          style: const TextStyle(
-                            fontSize: 18,
-                          ),
-                        ),
-                      )
-                    : Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          geeta.chapterSummaryHindi,
-                          style: const TextStyle(
-                            fontSize: 18,
-                            fontStyle: FontStyle.italic,
-                          ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    Card(
+                      elevation: 10,
+                      child: Container(
+                        padding: const EdgeInsets.all(17),
+                        width: double.infinity,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              (langProvider.isLangModel.isLang == false)
+                                  ? 'Chapter No. : ${geeta.chapterNumber}'
+                                  : 'अध्याय संख्या. : ${geeta.chapterNumber}',
+                              style: const TextStyle(
+                                fontSize: 18,
+                                fontStyle: FontStyle.italic,
+                              ),
+                            ),
+                            Text(
+                              (langProvider.isLangModel.isLang == false)
+                                  ? 'Chapter Name : ${geeta.nameMeaning}'
+                                  : 'अध्याय का नाम : ${geeta.name}',
+                              style: const TextStyle(
+                                fontSize: 18,
+                                fontStyle: FontStyle.italic,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
+                    ),
+                    Card(
+                      elevation: 10,
+                      child: Container(
+                        padding: const EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        alignment: Alignment.topLeft,
+                        child: (langProvider.isLangModel.isLang == false)
+                            ? Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  geeta.chapterSummary,
+                                  style: const TextStyle(
+                                    fontSize: 18,
+                                  ),
+                                ),
+                              )
+                            : Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  geeta.chapterSummaryHindi,
+                                  style: const TextStyle(
+                                    fontSize: 18,
+                                    fontStyle: FontStyle.italic,
+                                  ),
+                                ),
+                              ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }

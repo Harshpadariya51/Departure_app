@@ -55,9 +55,11 @@ class _NavbarState extends State<Navbar> {
             title: Text('Settings'),
           ),
           ListTile(
-            title: Text((langProvider.isLangModel.isLang != false)
-                ? "English To Hindi"
-                : "Hindi To English"),
+            title: Text(
+              (langProvider.isLangModel.isLang != false)
+                  ? "Hindi To English"
+                  : "English To Hindi",
+            ),
             subtitle: const Text("Click for Change Language"),
             trailing: Card(
               elevation: 10,
