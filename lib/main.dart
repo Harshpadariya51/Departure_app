@@ -2,7 +2,7 @@ import 'package:departure_gita/provider/data_provider/data_provider.dart';
 import 'package:departure_gita/provider/lang_provider/lang_provider.dart';
 import 'package:departure_gita/provider/theme_provider/theme_provider.dart';
 import 'package:departure_gita/view/screen/home_screen.dart';
-import 'package:departure_gita/view/screen/welcome_screen.dart';
+import 'package:departure_gita/view/screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -38,7 +38,8 @@ class MyApp extends StatelessWidget {
         initialRoute: 'welcome',
         routes: {
           '/': (context) => const HomePage(),
-          'welcome': (context) => const WelcomeScreen(),
+          'welcome': (context) => const splash_screen(),
+          // 'language_page': (context) => const language_page(),
         },
       ),
     );

@@ -2,6 +2,7 @@ import 'package:departure_gita/provider/data_provider/data_provider.dart';
 import 'package:departure_gita/provider/lang_provider/lang_provider.dart';
 import 'package:departure_gita/provider/theme_provider/theme_provider.dart';
 import 'package:departure_gita/view/screen/detail_screen.dart';
+import 'package:departure_gita/view/screen/language_page.dart';
 import 'package:departure_gita/view/widgets/sidebar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -24,39 +25,62 @@ class _HomePageState extends State<HomePage> {
         Provider.of<LangProvider>(context, listen: false);
     dataProvider.getGeetaData();
     return Scaffold(
+      backgroundColor: Colors.orange.shade300,
       appBar: AppBar(
-        title: const Text('Bhagavad Geeta'),
+        backgroundColor: Colors.orange.shade300,
+        title: const Text(
+          'Bhagavad Geeta',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         centerTitle: true,
       ),
       drawer: const Navbar(),
       body: ListView(
         children: dataProvider.newData.map(
           (e) {
-            return Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-              child: Card(
-                margin: const EdgeInsets.all(5),
-                shadowColor: Colors.greenAccent,
-                surfaceTintColor: Colors.blueAccent,
-                elevation: 10,
-                child: ListTile(
-                  leading: CircleAvatar(
-                    child: Text(e.chapterNumber.toString()),
+            return Card(
+              margin: const EdgeInsets.all(8),
+              elevation: 8,
+              child: Container(
+                height: 120,
+                decoration: BoxDecoration(
+                  color: Colors.orange.shade200,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Center(
+                  child: ListTile(
+                    leading: Text(
+                      e.chapterNumber.toString(),
+                      style: const TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 12),
+                    ),
+                    title: (langProvider.isLangModel.isLang == false)
+                        ? Text(
+                            e.nameMeaning,
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          )
+                        : Text(
+                            e.name,
+                          ),
+                    subtitle: Text(
+                      e.nameTranslation,
+                      style: const TextStyle(),
+                    ),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return DetailScreen(geeta: e);
+                          },
+                        ),
+                      );
+                    },
                   ),
-                  title: (langProvider.isLangModel.isLang == false)
-                      ? Text(e.nameMeaning)
-                      : Text(e.name),
-                  subtitle: Text(e.nameTranslation),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return DetailScreen(geeta: e);
-                        },
-                      ),
-                    );
-                  },
                 ),
               ),
             );

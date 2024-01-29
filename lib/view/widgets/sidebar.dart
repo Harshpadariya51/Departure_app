@@ -17,103 +17,154 @@ class _NavbarState extends State<Navbar> {
     ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
     LangProvider langProvider = Provider.of<LangProvider>(context);
     return Drawer(
+      backgroundColor: Colors.orange.shade300,
       child: ListView(
         children: [
-          UserAccountsDrawerHeader(
-            accountName: const Text('Avtar Profile'),
-            accountEmail: const Text('+91 70965 84269'),
-            currentAccountPicture: CircleAvatar(
-              child: ClipOval(
-                child: Image.asset('assets/img/pic.jpg'),
-              ),
-            ),
-            decoration: const BoxDecoration(
-              color: Colors.blue,
-              image: DecorationImage(
-                fit: BoxFit.fill,
-                image: NetworkImage(
-                    'https://oflutter.com/wp-content/uploads/2021/02/profile-bg3.jpg'),
-              ),
-            ),
-          ),
-          ListTile(
-            leading: const Icon(Icons.home),
-            title: const Text('Home'),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) {
-                    return const HomePage();
-                  },
+          Container(
+            margin: const EdgeInsets.all(10),
+            height: 70,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              boxShadow: const [
+                BoxShadow(
+                  color: Colors.black26,
+                  spreadRadius: 1,
+                  blurRadius: 10,
                 ),
-              );
-            },
-          ),
-          const ListTile(
-            leading: Icon(Icons.settings),
-            title: Text('Settings'),
-          ),
-          ListTile(
-            title: Text(
-              (langProvider.isLangModel.isLang != false)
-                  ? "Hindi To English"
-                  : "English To Hindi",
+              ],
+              color: Colors.orange.shade200,
+              borderRadius: BorderRadius.circular(10),
             ),
-            subtitle: const Text("Click for Change Language"),
-            trailing: Card(
-              elevation: 10,
-              child: IconButton(
-                onPressed: () {
-                  langProvider.changeLang();
-                },
-                icon: (langProvider.isLangModel.isLang == false)
-                    ? Image(
-                        color: (themeProvider.themeModel.isLight == false)
-                            ? Colors.white
-                            : Colors.black,
-                        width: 59,
-                        image: const AssetImage(
-                          'assets/img/hindi.png',
-                        ),
-                      )
-                    : Image(
-                        color: (themeProvider.themeModel.isLight == false)
-                            ? Colors.white
-                            : Colors.black,
-                        width: 59,
-                        image: const AssetImage(
-                          'assets/img/en.png',
-                        ),
+            child: IconButton(
+              onPressed: () {
+                langProvider.changeLang();
+              },
+              icon: (langProvider.isLangModel.isLang == false)
+                  ? Image(
+                      color: (themeProvider.themeModel.isLight == false)
+                          ? Colors.white
+                          : Colors.black,
+                      // width: 59,
+                      image: const AssetImage(
+                        'assets/img/hindi.png',
                       ),
-              ),
+                      height: 70,
+                      width: 90,
+                      fit: BoxFit.cover,
+                    )
+                  : Image(
+                      color: (themeProvider.themeModel.isLight == false)
+                          ? Colors.white
+                          : Colors.black,
+                      width: 59,
+                      image: const AssetImage(
+                        'assets/img/english.png',
+                      ),
+                      height: 100,
+                      fit: BoxFit.cover,
+                    ),
             ),
           ),
-          ListTile(
-            title: Text(
-              (themeProvider.themeModel.isLight == false)
-                  ? "Dark To Light"
-                  : "Light To Dark",
+          Container(
+            margin: const EdgeInsets.all(10),
+            height: 70,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              boxShadow: const [
+                BoxShadow(
+                  color: Colors.black26,
+                  spreadRadius: 1,
+                  blurRadius: 10,
+                ),
+              ],
+              color: Colors.orange.shade200,
+              borderRadius: BorderRadius.circular(10),
             ),
-            subtitle: const Text("Click for Change Theme"),
-            trailing: Card(
-              elevation: 10,
-              child: IconButton(
-                onPressed: () {
-                  themeProvider.changeTheme();
-                },
-                icon: (themeProvider.themeModel.isLight == false)
-                    ? const Icon(
-                        Icons.light_mode,
-                      )
-                    : const Icon(
-                        Icons.dark_mode,
-                      ),
-              ),
+            child: IconButton(
+              onPressed: () {
+                themeProvider.changeTheme();
+              },
+              icon: (themeProvider.themeModel.isLight == false)
+                  ? const Icon(
+                      Icons.light_mode_outlined,
+                      color: Colors.white,
+                    )
+                  : const Icon(
+                      Icons.dark_mode_outlined,
+                    ),
             ),
+          ),
+          const SizedBox(height: 100),
+          const Image(
+            color: Colors.orange,
+            image: AssetImage('assets/img/splash.png'),
           ),
         ],
       ),
     );
+    //
+    //
+    //
+    //
+    // Drawer(
+    //   child: ListView(
+    //     children: [
+    //       ListTile(
+    //         leading: Card(
+    //           elevation: 8,
+    //           child: Container(
+    //             width: double.infinity,
+    //             child: IconButton(
+    //               onPressed: () {
+    //                 langProvider.changeLang();
+    //               },
+    //               icon: (langProvider.isLangModel.isLang == false)
+    //                   ? Image(
+    //                       color: (themeProvider.themeModel.isLight == false)
+    //                           ? Colors.white
+    //                           : Colors.black,
+    //                       width: 59,
+    //                       image: const AssetImage(
+    //                         'assets/img/hindi.png',
+    //                       ),
+    //                       fit: BoxFit.cover,
+    //                     )
+    //                   : Image(
+    //                       color: (themeProvider.themeModel.isLight == false)
+    //                           ? Colors.white
+    //                           : Colors.black,
+    //                       width: 59,
+    //                       image: const AssetImage(
+    //                         'assets/img/english.png',
+    //                       ),
+    //                       fit: BoxFit.cover,
+    //                     ),
+    //             ),
+    //           ),
+    //         ),
+    //       ),
+    //       ListTile(
+    //         leading: Card(
+    //           elevation: 8,
+    //           child: Container(
+    //             width: double.infinity,
+    //             child: IconButton(
+    //               onPressed: () {
+    //                 themeProvider.changeTheme();
+    //               },
+    //               icon: (themeProvider.themeModel.isLight == false)
+    //                   ? const Icon(
+    //                       Icons.light_mode_outlined,
+    //                     )
+    //                   : const Icon(
+    //                       Icons.dark_mode_outlined,
+    //                     ),
+    //             ),
+    //           ),
+    //         ),
+    //       ),
+    //     ],
+    //   ),
+    // );
   }
 }
